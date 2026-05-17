@@ -47,6 +47,15 @@ main_window::main_window()
     setup_format_toolbar();
     setup_search_menu();
     setup_tools_menu();
+    setup_view_menu();
+    setup_status_bar();
+
+    spell_checker_.load_dictionary("data/words.txt");
+    highlighter_ = new spell_highlighter(spell_checker_, editor->document());
+
+    editor->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(editor, &QWidget::customContextMenuRequested,
+            this, &main_window::on_editor_context_menu);
 }
 
 main_window::~main_window() = default;
@@ -140,8 +149,9 @@ void main_window::setup_format_menu()
 
     for (const auto& transform : transforms) {
         const auto* action = text_case_menu->addAction(QString::fromStdString(transform->name()));
-        connect(action, &QAction::triggered, this, [this, &transform] {
-            apply_transform(*transform);
+        const text_transform* t = transform.get();
+        connect(action, &QAction::triggered, this, [this, t] {
+            apply_transform(*t);
         });
     }
 
