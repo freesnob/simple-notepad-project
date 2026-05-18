@@ -26,6 +26,8 @@ The project features exception handling, a spell checker, word frequency analysi
 
 * **Spell Checker**: A 370,105-word dictionary is loaded at startup. Misspelled words are underlined in red in real time as the user types. Right-clicking a misspelled word shows up to 5 suggestions. Tools → Check Spelling forces a full re-pass over the document.
 
+<img alt="Notepad" src="https://i.postimg.cc/mZny3HNY/Snimok-ekrana-2026-05-18-v-11-26-45.png"/>
+
 * **Word Frequency**: The editor analyzes the document and displays a ranked table of every word by occurrence count.
 
 ---
