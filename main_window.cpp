@@ -238,6 +238,13 @@ void main_window::setup_tools_menu()
     connect(action_word_freq, &QAction::triggered, this, [this] {
         show_word_frequency();
     });
+
+    tools_menu->addSeparator();
+
+    const auto* action_spell_check = tools_menu->addAction("Check Spelling...");
+    connect(action_spell_check, &QAction::triggered, this, [this] {
+        run_spell_check();
+    });
 }
 
 void main_window::apply_transform(const text_transform& transform) const

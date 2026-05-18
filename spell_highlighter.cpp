@@ -3,7 +3,7 @@
 spell_highlighter::spell_highlighter(const spell_checker& checker, QTextDocument* parent)
     : QSyntaxHighlighter(parent)
     , checker_(checker)
-    , word_re_(QStringLiteral("[A-Za-z]+"))   // match runs of letters only
+    , word_re_(QStringLiteral("[A-Za-z]+"))
 {
     misspelled_fmt_.setUnderlineStyle(QTextCharFormat::SpellCheckUnderline);
     misspelled_fmt_.setUnderlineColor(Qt::red);
